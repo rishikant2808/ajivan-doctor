@@ -1,0 +1,22 @@
+<h2>Tommorow's Bookings</h2>
+<%var d = new Date(new Date().getTime() + 24 * 60 * 60 * 1000) %>
+<%var date =d.getDate()+'/'+(d.getMonth()+1)+'/'+ d.getFullYear()%>
+<%=date%>
+<% data.doctors.forEach(function(x){ %>
+   <li>
+   <h4>
+      <%=x.name%>
+    <% x.booked_info.forEach(function(info){ %>
+        <h4>
+             <%if(info.visiting_date==date){%>
+                <h5>Booking Time: <%=info.booking_date%></h5>
+                <h5>Visiting Time: <%=info.visiting_date %></h5>
+                <h5>Patient Name: <%=info.patient_info.name %></h5>
+             <% }%>
+         </h4>
+      <% }) %>
+        <!-- <em><%= x %></em> -->
+    </h4>
+   </li>
+ <% }) %>
+ 

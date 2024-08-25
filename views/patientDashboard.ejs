@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://kit.fontawesome.com/1966a3f118.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <title>Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+    #search_bar{
+        position: absolute;
+        width: 369px;
+        height: 56px;
+        left: 325px;
+        top: 12px;
+        /* border-radius: 40px;
+        border: 1px solid #6249F2; */
+        box-sizing: border-box;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: #6249F2;
+    }
+    .hospital{
+width: 1300px;
+height: 180px;
+left: 163px;
+/* border: 1px solid #6249F2;
+ border-radius: 10px;  */
+/* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+    }
+    .nav-btn{
+        position: absolute;
+width: 190px;
+height: 41px;
+left: 940px;
+top: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 12px;
+/* or 60% */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #6249F2;
+    }
+    .nav-btn1{
+        position: absolute;
+width: 190px;
+height: 41px;
+left: 1110px;
+top: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 12px;
+/* or 60% */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #6249F2;
+    }
+    .view_btn{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position:absolute;
+            top:25px;
+            left:887px;
+            color: #FFFFFF;
+    }
+    .line {
+    border-style:solid;
+    border-left: double-thick;
+    border-color: #00ff00;
+    margin-right: .5em;
+    opacity:0;
+    /* -webkit-transition:all 1s ease;
+    -moz-transition: all 1s ease; */
+}
+.visible {
+    opacity:1;
+}
+  </style>
+</head>
+<body>
+    <!-- <nav class="navbar navbar-expand navbar-light bg-white">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/search" method="GET">
+            <div id="search_bar">
+                <input type="text" id="dsearch" name="dsearch" class="form-control border-1  small" style="border-radius: 40px; color:#6249F2; border-color: #6249F2;" placeholder="Search Hospital"
+                    aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn" style="color:#6249F2" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <li class="nav-btn"> <a href="/patient_bookings/<%=user._id%>" style="text-decoration: none; color:#6249F2;">My Appointments</a></li>
+        <li class="nav-btn1"><a href="/patientLogout" style="text-decoration: none; color: #6249F2;">Logout</a></li>
+        
+    </nav> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Appointment System</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </ul>
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/patient_bookings/<%=user._id%>">My Appointments</a>
+              </li>
+              <li class="nav-item" >
+                <a class="nav-link" href="/patientLogout">Logout</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+    </nav>
+    
+    <div class="container mx-5 px-0 my-0 py-0">
+        <div class="row mx-0 my-0 py-0 px-0">
+            <% hospitals.forEach(function(hospital){%>
+
+                <div class="hospital" style="margin-bottom: 20px; margin-left:250px;">
+                    <div class="card-body">
+                        <!-- <div class="card-text" style=" margin-bottom:5px;font-size:16.5px; align-items: center; justify-items:center; justify-content: center;"><%=hospital.name%></div>   -->
+                        <div class="card-text" style="font-size:16.5px; align-items:center; justify-items:center; justify-content:center">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="<%=hospital.image%>" style="width:250px; height:153px;">
+                                </div>
+                                <div class="col-md-7" id="details">
+                                    
+                                    <h6 style="font-size:21px; font-weight: 400;"><%=hospital.name%></h6>
+                                    <h6 style="font-size: 16px; font-weight:300;"><%=hospital.state%></h6>
+                                    <h6 style="font-size: 14px; font-weight:300;"><i class="fas fa-map-marker-alt" style="margin-right:5px;"></i> <%=hospital.address%></h6>
+                                    <h6 style="font-size: 14px; font-weight:300;"><i class="fas fa-phone-alt" style="margin-right:5px;"></i> 0366425823</h6>
+                                    <div class="view" style="margin:0px; width: 120px; height: 40px; border-radius: 48px;background: #9f91ea;"><h6 style="padding-top:10px; font-size:13px;"><a href="/doctor/view/<%=hospital._id%>" style="text-decoration: none; color:white; margin-left:20px;">View Doctors</a></h6></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            <%})%>
+        </div>
+<script>
+  $(document).ready(function () {
+    $('#details').mouseover(function () {
+        $('.line').addClass('visible');
+    });
+    $('#details').mouseleave(function () {
+        $('.line').removeClass('visible');
+    });
+});
+</script>
+</body>
+</html>

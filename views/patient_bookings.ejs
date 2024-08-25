@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Design || Future Web</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    /* background-color: #adacac; */
+}
+/* .header_fixed {
+    max-height: 100vh;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #dddddd;
+    margin-top:50%;
+} */
+
+/* table {
+    width: 100%;
+    border-collapse: collapse;
+} 
+
+
+
+.header_fixed thead th {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    color: #e6e7e8;
+    font-size: 15px;
+}
+
+th,
+td {
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+td img {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 5px solid #e6e7e8;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(odd) {
+    background-color: #edeef1;
+}
+
+tr:hover td {
+    color: #44b478;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+td button {
+    border: none;
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: #e6e7e8;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+} */
+table {
+    width: 1000px;
+    border-collapse: collapse;
+    max-height: 100vh;
+    overflow: auto;
+    border: 1px solid #dddddd;
+} 
+thead th {
+    top: 0;
+    background-color: #afa3f3;
+    color: white;
+    font-size: 13.5px;
+}
+
+th,
+td {
+    border-bottom: 1px solid white;
+    padding: 20px 80px;
+    font-size: 13.5px;
+}
+tr:nth-child(even) {
+    background-color: #FFFFFF;
+}
+
+tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+tr:hover td {
+    color: #6249F2;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+td button {
+    border: none;
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: #e6e7e8;
+}
+/* .scrollbar-black::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.scrollbar-black::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+} */
+.nav-btn0{
+    position: absolute;
+width: 190px;
+height: 41px;
+left: 500px;
+top: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 12px;
+/* or 60% */
+
+display: flex;
+align-items: center;
+text-align: center;
+color: #6249F2;
+}
+    .nav-btn{
+        position: absolute;
+width: 190px;
+height: 41px;
+left: 650px;
+top: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 12px;
+/* or 60% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #6249F2;
+    }
+    .nav-btn1{
+        position: absolute;
+width: 190px;
+height: 41px;
+left: 850px;
+top: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 12px;
+/* or 60% */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #6249F2;
+    }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-light bg-white">
+        <li class="nav-btn0"><a href="/patientDashboard" style="text-decoration: none; color:#6249F2;">Dashboard</a></li>
+        <li class="nav-btn"> <a href="/patient_bookings/<%=patient._id%>" style="text-decoration: none; color:#6249F2;">My Appointments</a></li>
+        <li class="nav-btn1">Profile</li>
+    </nav>
+    <div class="container" style="margin-top:100px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Visiting Date</th>
+                    <th>Doctor</th>
+                    <th>Specialization</th>
+                    <th>Hospital</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% patient.booking_info.forEach(function(booking){%>
+                        <!-- <td><h4><%= booking.booking_date %></h4></td> -->
+                        <tr>
+                        <td><h4><%= booking.visiting_date %></h4></td>
+                        <td><h4><%= booking.doctor_info.name %></h4></td>
+                        <td><h4><%= booking.doctor_info.specialization %></h4></td>
+                        <td><h4><%= booking.doctor_info.hospital.name %></h4></td>
+                        </tr>
+                        <!-- <h4>Hospital Address: <%= booking.doctor_info.hospital.address %>, 
+                                              <%= booking.doctor_info.hospital.city %>,
+                                              <%= booking.doctor_info.hospital.state %>,
+                                            </h4> -->
+                <% }) %>
+                
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+
+</html>
+        
+        
+
+
+
